@@ -1,0 +1,44 @@
+# Git
+.git
+.gitignore
+
+# Node / frontend (por si hay algo)
+node_modules
+npm-debug.log
+
+# Logs
+*.log
+
+# Archivos temporales
+tmp/
+temp/
+*.tmp
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
+
+# Docker
+docker-compose.yml
+docker-compose.prod.yml
+
+# Docs / media (NO necesarios en la imagen)
+README.md
+images/
+videos/
+
+# Archivos comprimidos
+*.tar
+*.tar.gz
+*.zip
+
+# Variables sensibles
+.env
+.env.*
+
+# Tests (si no son necesarios en producción)
+tests/

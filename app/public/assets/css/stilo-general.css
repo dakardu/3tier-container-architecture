@@ -1,0 +1,168 @@
+body {
+	background-color: #121212 !important;
+	color: #eeeeee;
+	font-family: "Nunito", sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+.card,
+.container,
+.table,
+.table-dark,
+.card-body {
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+a {
+	color: #90caf9;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+a:hover {
+	color: #bbdefb;
+	text-decoration: underline;
+}
+
+/* Barra de navegación personalizada */
+.logo {
+	height: 60px;
+	width: 60px;
+	object-fit: contain;
+}
+
+.d-flex.align-items-center.gap-3 {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.admin-panel-wrapper {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+#nav-container {
+	background-color: #2c2c2c;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	width: 100%;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	z-index: 999;
+}
+
+.custom-navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 15px 30px;
+	box-sizing: border-box;
+
+	/*box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	border-bottom: 1px solid #444;
+	background: linear-gradient(to right, #2c2c2c, #3a3a3a);
+	color: #eeeeee;*/
+}
+
+.custom-navbar a {
+	color: #90caf9;
+	font-weight: 600;
+	margin-left: 15px;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.custom-navbar a:hover {
+	color: #bbdefb;
+	text-decoration: underline;
+}
+
+.custom-navbar .text-primary {
+	color: #90caf9 !important;
+}
+
+/* Contenido principal */
+#main-content {
+	padding-top: 40px 30px;
+	margin-top: 0;
+	width: 100%;
+	background-color: transparent;
+	min-height: calc(100vh - 80px);
+}
+
+#main-content h2,
+#main-content h3 {
+	color: #90caf9;
+	margin-bottom: 30px;
+	text-align: center;
+	font-size: 2.2rem;
+}
+
+.welcome-box {
+	background-color: #1e1e1e;
+	padding: 40px;
+	border-radius: 12px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+	margin: auto;
+	text-align: center;
+}
+
+/* Formularios */
+form {
+	background-color: #1e1e1e;
+	padding: 25px;
+	border-radius: 10px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+form label {
+	color: #e0e0e0;
+	font-weight: 600;
+}
+
+.form-control {
+	background-color: #2a2a2a;
+	color: #f1f1f1;
+	border: 1px solid #444;
+	transition: border-color 0.3s;
+}
+
+.form-control:focus {
+	border-color: #2196f3;
+	box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.25);
+}
+
+.btn-primary {
+	background-color: #2196f3;
+	border: none;
+	font-weight: bold;
+}
+
+.btn-primary:hover {
+	background-color: #1976d2;
+}
+
+/* Mejora visual de los placeholders */
+::placeholder {
+	color: #90caf9 !important; /* Celeste moderno y legible */
+	opacity: 1; /* Asegura que se vea con fuerza */
+}
+
+/* Para mayor compatibilidad: navegadores específicos */
+::-webkit-input-placeholder {
+	color: #90caf9;
+}
+:-moz-placeholder {
+	color: #90caf9;
+}
+::-moz-placeholder {
+	color: #90caf9;
+}
+:-ms-input-placeholder {
+	color: #90caf9;
+}

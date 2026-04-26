@@ -1,0 +1,6 @@
+# env files 
+.env
+**/.env
+*.log
+node_modules
+vendor

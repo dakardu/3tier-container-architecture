@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Establece la base de la URL para que coincida con la configuración de PHP.
+  # Esto es importante si el proyecto no está en el directorio raíz del dominio.
+  RewriteBase /
+
+  # No reescribir las solicitudes para archivos o directorios existentes.
+  # Esto permite que los assets (CSS, JS, imágenes) se sirvan directamente.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/phpmyadmin
+
+  # Redirigir todas las demás solicitudes a index.php para que el enrutador de PHP las maneje.
+  RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Asegurar que CSS y JS se sirvan con el tipo MIME correcto.
+AddType text/css .css
+AddType application/javascript .js
