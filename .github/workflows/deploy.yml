@@ -22,8 +22,9 @@ jobs:
               sudo apt update && sudo apt install git -y
             fi
 
-            # clonar repo si no existe
-            if [ ! -d "/home/ubuntu/netservices" ]; then
+            # si no es un repo válido -> borrar y clonar limpio
+            if [ ! -d "/home/ubuntu/netservices/.git" ]; then
+              rm -rf /home/ubuntu/netservices
               git clone https://github.com/dakardu/3tier-container-architecture.git /home/ubuntu/netservices
             fi
 
