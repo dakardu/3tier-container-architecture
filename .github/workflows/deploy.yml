@@ -30,6 +30,9 @@ jobs:
 
             cd /home/ubuntu/netservices
 
+            # Crear .env desde secrect
+            echo "${{ secrets.ENV_FILE }}" > .env
+
             # actualizar código
             git pull
 
