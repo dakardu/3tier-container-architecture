@@ -73,11 +73,11 @@ http://localhost
 ### 🐳 Containerización (Docker)
 
 - Migración completa a contenedores
-- Docker Compose como orquestador
+- Docker Compose como orquestador → NGINX (HTTP → próximamente HTTPS)
 - Portabilidad entre entornos
 - Infraestructura como código
 
-## 🚀 CI/CD Pipeline
+## 🚀 CI/CD Pipeline (Continuous Deployment)
 
 El despliegue está automatizado utilizando GitHub Actions.
 
@@ -85,9 +85,10 @@ El despliegue está automatizado utilizando GitHub Actions.
 
 1. Push a la rama `main`
 2. GitHub Actions se ejecuta automáticamente
-3. Conexión por SSH a la VM en Oracle Cloud
-4. Actualización del código (`git pull`)
-5. Reconstrucción y despliegue de contenedores con Docker Compose
+3. Generación del archivo `.env` desde secrets
+4. Conexión por SSH a la VM en Oracle Cloud
+5. Actualización del código (`git pull`)
+6. Despliegue con Docker Compose (`up -d --build`)
 
 ### Seguridad
 
@@ -101,6 +102,7 @@ El despliegue está automatizado utilizando GitHub Actions.
 
 - Uso de `ENV_FILE` para configuración desacoplada
 - Evita exponer credenciales en el repositorio
+- Se genera dinámicamente en el pipeline a partir de GitHub Secrets.
 
 ## ☁️ Deployment
 
