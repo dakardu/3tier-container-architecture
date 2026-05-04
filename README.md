@@ -77,16 +77,53 @@ http://localhost
 - Portabilidad entre entornos
 - Infraestructura como código
 
+## 🚀 CI/CD Pipeline
+
+El despliegue está automatizado utilizando GitHub Actions.
+
+### Flujo:
+
+1. Push a la rama `main`
+2. GitHub Actions se ejecuta automáticamente
+3. Conexión por SSH a la VM en Oracle Cloud
+4. Actualización del código (`git pull`)
+5. Reconstrucción y despliegue de contenedores con Docker Compose
+
+### Seguridad
+
+- Uso de claves SSH dedicadas
+- Secrets gestionados en GitHub:
+  - `SSH_HOST`
+  - `SSH_USER`
+  - `SSH_KEY`
+
+### Variables de entorno
+
+- Uso de `ENV_FILE` para configuración desacoplada
+- Evita exponer credenciales en el repositorio
+
+## ☁️ Deployment
+
+La aplicación está desplegada en una máquina virtual en Oracle Cloud (OCI).
+
+- Subnet pública con acceso a Internet
+- Security Lists configuradas (puertos 22, 80)
+- Acceso mediante SSH
+- Exposición del servicio vía Nginx
+
 ### ⚠️ Problemas reales y soluciones
 
 - Pérdida de sesiones en entorno multi-nodo → solucionado con Redis
 - Pérdida de datos al recrear contenedores → solucionado con volúmenes
 - Problemas de inicialización de base de datos → solucionado con scripts de entrypoint
+- Problemas de conectividad (OCI Security Lists) → apertura de puertos 80/443
+- Error de permisos en apt → uso correcto de sudo
+- Fallos en despliegue por falta de `.env` → solucionado con `ENV_FILE`
 
 ## 🚀 Próximos pasos
 
-- Implementar HTTPS (Let's Encrypt)
-- Añadir healthchecks
-- Pipeline CI/CD (GitHub Actions)
-- Despliegue en cloud (OCI / AWS)
-- Escalado automático
+- Implementar HTTPS (Let's Encrypt + Certbot)
+- Añadir healthchecks a los servicios
+- Despliegue multi-cloud (OCI / AWS / otros proveedores)
+- Escalado horizontal (Docker Swarm o Kubernetes)
+- Monitorización (Prometheus / Grafana)
