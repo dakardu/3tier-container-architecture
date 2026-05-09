@@ -24,7 +24,39 @@ jobs:
 
             # si no es un repo válido -> borrar y clonar limpio
             if [ ! -d "/home/ubuntu/netservices/.git" ]; then
-              rm -rf /home/ubuntu/netservices
+              git clone https://github.com/dakardu/3tier-container-architecture.git /home/ubuntu/netservices
+            fi
+
+            cd /home/ubuntu/netservices
+
+            # Crear .env desde secrect
+            echo "${{ secrets.ENV_FILE }}" > .env
+
+            # actualizar código
+            git pull
+
+            # levantar contenedores
+            docker compose down || true
+            docker compose up -d --build
+
+  deploy-aws:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AWS_SSH_HOST }}
+          username: ${{ secrets.AWS_SSH_USER }}
+          key: ${{ secrets.AWS_SSH_KEY }}
+          script: |
+            # instalar git si no está
+            if ! command -v git &> /dev/null; then
+              sudo apt update && sudo apt install git -y
+            fi
+
+            # si no es un repo válido -> borrar y clonar limpio
+            if [ ! -d "/home/ubuntu/netservices/.git" ]; then
               git clone https://github.com/dakardu/3tier-container-architecture.git /home/ubuntu/netservices
             fi
 
