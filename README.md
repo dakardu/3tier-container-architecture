@@ -122,10 +122,39 @@ La aplicación está desplegada en una máquina virtual en Oracle Cloud (OCI).
 - Error de permisos en apt → uso correcto de sudo
 - Fallos en despliegue por falta de `.env` → solucionado con `ENV_FILE`
 
+## Últimas mejoras implementadas
+
+### HTTPS con Let's Encrypt
+- Configuración de HTTPS usando Let's Encrypt y Certbot
+- Integración de certificados SSL dentro de la arquitectura Docker
+- Ajustes en `docker-compose.yml` para certificados y volúmenes
+- Configuración de `nginx.conf`:
+  - Redirección automática HTTP → HTTPS
+  - Cabeceras de seguridad SSL
+- Apertura del puerto `443` en OCI Security Lists
+
+### Despliegue automatizado en AWS
+- Creación y preparación de una instancia EC2 en AWS
+- Conexión remota mediante SSH usando claves `.pem`
+- Actualización del sistema e instalación de dependencias:
+  - Docker
+  - Docker Compose
+  - Git
+  - Curl
+  - Certbot y utilidades necesarias
+- Configuración de secretos en GitHub Actions:
+  - `AWS_SSH_HOST`
+  - `AWS_SSH_USER`
+  - `AWS_SSH_KEY`
+- Implementación de un nuevo job de despliegue automático para AWS
+- Despliegue multi-cloud desde un único workflow CI/CD
+- Verificación de funcionamiento correcto en OCI y AWS
+
 ## 🚀 Próximos pasos
 
-- Implementar HTTPS (Let's Encrypt + Certbot)
 - Añadir healthchecks a los servicios
-- Despliegue multi-cloud (OCI / AWS / otros proveedores)
-- Escalado horizontal (Docker Swarm o Kubernetes)
-- Monitorización (Prometheus / Grafana)
+- Implementar observabilidad con Prometheus y Grafana
+- Pipeline CI/CD con testing automático
+- Escalado horizontal con Docker Swarm o Kubernetes
+- Balanceo de carga entre múltiples nodos
+- Automatización de backups de MariaDB
