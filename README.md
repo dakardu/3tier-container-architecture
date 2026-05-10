@@ -138,7 +138,7 @@ La aplicación está desplegada en una máquina virtual en Oracle Cloud (OCI).
 - Conexión remota mediante SSH usando claves `.pem`
 - Actualización del sistema e instalación de dependencias:
   - Docker
-  - Docker Compose
+  - Docker Compose Plugin
   - Git
   - Curl
   - Certbot y utilidades necesarias
@@ -147,8 +147,8 @@ La aplicación está desplegada en una máquina virtual en Oracle Cloud (OCI).
   - `AWS_SSH_USER`
   - `AWS_SSH_KEY`
 - Implementación de un nuevo job de despliegue automático para AWS
-- Despliegue multi-cloud desde un único workflow CI/CD
-- Verificación de funcionamiento correcto en OCI y AWS
+- Despliegue multi-cloud automatizado desde un único workflow CI/CD
+- Validación operativa en entornos OCI y AWS
 
 ## 🚀 Próximos pasos
 
